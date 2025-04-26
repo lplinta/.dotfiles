@@ -11,9 +11,16 @@ return {
                     mocha = {
                         base = '#282c34',
                         mantle = '#282c34',
-                        surface1 = '#9399b2',
+                        --surface1 = '#9399b2',
                         blue = '#77a8f9',
                         lavender = '#b0b9fd',
+                    }
+                },
+                integrations = {
+                    harpoon = true,
+                    treesitter = true,
+                    telescope = {
+                        enabled = true
                     }
                 }
             })

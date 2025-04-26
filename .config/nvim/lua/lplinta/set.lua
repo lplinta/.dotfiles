@@ -22,12 +22,15 @@ vim.opt.termguicolors = true
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
-vim.opt.guicursor = "a:blinkon100"
+vim.opt.guicursor = vim.opt.guicursor:append('i:ver1-blinkon100')
+vim.opt.guicursor = vim.opt.guicursor:append("n:block-blinkon100")
+vim.opt.guicursor = vim.opt.guicursor:append("v:block-blinkon100")
 
-vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight on yank',
-    group = vim.api.nvim_create_augroup('highlight-yank', { clear = true }),
-    callback = function()
-        vim.highlight.on_yank()
-    end
-})
+vim.opt.cmdheight = 0
+
+vim.cmd[[
+    augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=200})
+    augroup END
+]]
