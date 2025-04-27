@@ -11,7 +11,6 @@ return {
                     mocha = {
                         base = '#282c34',
                         mantle = '#282c34',
-                        --surface1 = '#9399b2',
                         blue = '#77a8f9',
                         lavender = '#b0b9fd',
                     }
@@ -22,6 +21,10 @@ return {
                     telescope = {
                         enabled = true
                     }
+                },
+                custom_highlights = {
+                    BlinkCmpGhostText = { fg = '#545a68', italic = true },
+                    BlinkCmpMenu = { bg = '#2e303e' }
                 }
             })
 
