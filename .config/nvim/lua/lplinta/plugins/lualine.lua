@@ -9,12 +9,19 @@ return {
             if next(clients) == nil then
                 return ''
             end
-            return '⁘ '
+            return '⁘'
         end
+
+        local custom_catppuccin = require("lualine.themes.catppuccin")
+
+        custom_catppuccin.normal.a.bg = "#cba6f7"
+        custom_catppuccin.normal.b.fg = "#cba6f7"
+        custom_catppuccin.visual.a.bg = "#89dceb"
+        custom_catppuccin.visual.b.fg = "#89dceb"
 
         require('lualine').setup({
             options = {
-                theme = 'catppuccin',
+                theme = custom_catppuccin,
                 component_separators = '',
                 section_separators = { left = '', right = '' },
                 disabled_filetypes = { 'alpha', 'Outline' },
