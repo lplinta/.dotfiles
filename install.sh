@@ -5,13 +5,14 @@ TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/tpm"
 FISH_SHELL_PATH="/usr/bin/fish"
 
 PACKAGES_TO_INSTALL=(
+    curl
     less
     stow
     unzip
     ripgrep
-    openssh
     tmux
     fish
+    neovim
 )
 
 command_exists () {
@@ -40,6 +41,18 @@ install_build_tools () {
         install_package build-essential
     else
         echo "Ferramentas de build não encontradas. Instale-as manualmente."
+        return 1
+    fi
+    return 0
+}
+
+install_starship () {
+    echo "Tentando instalar o Starship..."
+    if command_exists curl; then
+        curl -sS https://starship.rs/install.sh | sh
+        echo "Starship instalado com sucesso!"
+    else
+        echo "Falha ao instalar Starship"
         return 1
     fi
     return 0
@@ -74,6 +87,8 @@ if command_exists fish; then
         fi
     fi
 fi
+
+install_starship
 
 echo "Aplicando configurações com stow..."
 if command_exists stow; then
