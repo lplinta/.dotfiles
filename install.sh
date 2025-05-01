@@ -21,6 +21,11 @@ install_package () {
     return 0
 }
 
+if ! command_exists stow; then
+    echo "stow não encontrado."
+    install_package stow
+fi
+
 if ! command_exists tmux; then
     echo "tmux não encontrado."
     install_package tmux
@@ -47,4 +52,11 @@ if command_exists fish; then
     fi
 fi
 
-echo "Configuração inicial dos dotfiles concluída!"
+echo "Aplicando configurações com stow..."
+if command_exists stow; then
+    stow .
+else
+    echo "stow não encontrado. A instalação falhou, execute 'stow .' manualmente."
+fi
+
+echo "Configuração concluída."
