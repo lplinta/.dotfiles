@@ -9,3 +9,10 @@
     ```bash
     ./install.sh
     ```
+3. **Configurar o tmux**
+   
+   Com o tmux rodando:
+   ```bash
+    tmux source ~/.tmux.conf
+    ```
+   Para instalar os plugins: `prefix` + <kbd>I</kbd>
