@@ -44,9 +44,9 @@ fi
 if command_exists fish; then
     current_shell=$(ps -p $$ -o comm=)
     if [[ "$current_shell" != "fish" ]]; then
-        read -p "Definir fish como seu shell padrão? (s/N): " answer
+        read -p "Definir fish como seu shell padrão para o usuário ($USER)? (s/N): " answer
         if [[ "$answer" =~ ^[Ss]$ ]]; then
-            sudo chsh -s "$FISH_SHELL_PATH"
+            chsh -s "$FISH_SHELL_PATH"
             echo "Reinicie seu terminal para aplicar a mudança de shell."
         fi
     fi
