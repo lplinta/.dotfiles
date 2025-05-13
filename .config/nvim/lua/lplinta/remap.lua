@@ -1,6 +1,6 @@
 vim.g.mapleader = ' '
 -- listar arquivos
-vim.keymap.set('n', '<leader>lf', vim.cmd.Ex)
+vim.keymap.set('n', '<leader>lf', '<cmd>Oil<cr>')
 
 -- mover linhas
 vim.keymap.set('v', 'J', ":m '>+1<CR>gv=gv")
