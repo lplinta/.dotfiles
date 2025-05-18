@@ -5,7 +5,21 @@ set -e
 TMUX_PLUGIN_MANAGER_REPO="https://github.com/tmux-plugins/tpm"
 TMUX_PLUGIN_MANAGER_PATH="$HOME/.tmux/plugins/tpm"
 FISH_SHELL_PATH="/usr/bin/fish"
-PACKAGES=(curl less stow unzip ripgrep tmux fish neovim)
+
+PACKAGES=(
+    curl
+    less
+    stow
+    unzip
+    ripgrep
+    tmux
+    fish
+    neovim
+    fd
+    zoxide
+    fzf
+    eza
+)
 
 command_exists() {
     command -v "$1" &>/dev/null
@@ -66,6 +80,16 @@ apply_dotfiles() {
     stow .
 }
 
+configure_zoxide() {
+    if [ -d "$HOME/.config/fish/conf.d" ]; then
+        ZOXIDE_CONF="$HOME/.config/fish/conf.d/zoxide.fish"
+        if [ ! -f "$ZOXIDE_CONF" ]; then
+            echo "Configurando zoxide no Fish..."
+            echo 'zoxide init fish | source' > "$ZOXIDE_CONF"
+        fi
+    fi
+}
+
 install_build_tools
 install_dependencies
 clone_tpm
@@ -83,6 +107,8 @@ if command_exists stow; then
 else
     echo "stow não encontrado. Execute 'stow .' manualmente."
 fi
+
+configure_zoxide
 
 echo "Configuração concluída com sucesso."
 
