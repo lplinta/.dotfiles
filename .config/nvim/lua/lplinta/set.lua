@@ -28,7 +28,8 @@ vim.opt.guicursor = vim.opt.guicursor:append('i:ver1-blinkon100')
 vim.opt.guicursor = vim.opt.guicursor:append("n:block-blinkon100")
 vim.opt.guicursor = vim.opt.guicursor:append("v:block-blinkon100")
 
-vim.opt.cmdheight = 0
+vim.opt.showmode = false
+-- vim.opt.cmdheight = 0
 
 vim.cmd [[
     augroup highlight_yank

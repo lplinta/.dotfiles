@@ -15,6 +15,7 @@ return {
     config = function()
         require('lspconfig').lua_ls.setup {}
         require('lspconfig').rust_analyzer.setup {}
+        require('lspconfig').csharp_ls.setup {}
 
         vim.api.nvim_create_autocmd('LspAttach', {
             callback = function(args)
@@ -36,15 +37,6 @@ return {
                 local map = function(keys, func, desc)
                     vim.keymap.set('n', keys, func, { buffer = args.buf, desc = 'LSP: ' .. desc })
                 end
-
-                map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
-                map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-                map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
-
-                map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
-                map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-
-                map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
                 map('<leader>r', vim.lsp.buf.rename, '[R]e[n]ame')
 
